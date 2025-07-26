@@ -139,9 +139,10 @@ else ()
                         ${FONTCONFIG_LIBRARY}
                         ${CMAKE_THREAD_LIBS_INIT})
 endif ()
-install(TARGETS pdftops RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
-install(FILES ${PROJECT_SOURCE_DIR}/doc/pdftops.1 DESTINATION ${CMAKE_INSTALL_MANDIR}/man1)
-
+if(XPDF_INSTALL)
+	install(TARGETS pdftops RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
+	install(FILES ${PROJECT_SOURCE_DIR}/doc/pdftops.1 DESTINATION ${CMAKE_INSTALL_MANDIR}/man1)
+endif()
 #--- pdftotext
 
 add_executable(pdftotext
@@ -155,8 +156,10 @@ target_link_libraries(pdftotext goo fofi
                       ${LCMS_LIBRARY}
                       ${FONTCONFIG_LIBRARY}
                       ${CMAKE_THREAD_LIBS_INIT})
-install(TARGETS pdftotext RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
-install(FILES ${PROJECT_SOURCE_DIR}/doc/pdftotext.1 DESTINATION ${CMAKE_INSTALL_MANDIR}/man1)
+if(XPDF_INSTALL)
+	install(TARGETS pdftotext RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
+	install(FILES ${PROJECT_SOURCE_DIR}/doc/pdftotext.1 DESTINATION ${CMAKE_INSTALL_MANDIR}/man1)
+endif()
 
 #--- pdftohtml
 
@@ -179,8 +182,10 @@ if (HAVE_SPLASH AND PNG_FOUND)
                         ${PNG_LIBRARIES}
                         ${FONTCONFIG_LIBRARY}
                         ${CMAKE_THREAD_LIBS_INIT})
-  install(TARGETS pdftohtml RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
-  install(FILES ${PROJECT_SOURCE_DIR}/doc/pdftohtml.1 DESTINATION ${CMAKE_INSTALL_MANDIR}/man1)
+	if(XPDF_INSTALL)
+	  install(TARGETS pdftohtml RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
+	  install(FILES ${PROJECT_SOURCE_DIR}/doc/pdftohtml.1 DESTINATION ${CMAKE_INSTALL_MANDIR}/man1)
+	endif()
 endif ()
 
 #--- pdfinfo
@@ -195,8 +200,10 @@ target_link_libraries(pdfinfo goo fofi
                       ${LCMS_LIBRARY}
                       ${FONTCONFIG_LIBRARY}
                       ${CMAKE_THREAD_LIBS_INIT})
-install(TARGETS pdfinfo RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
-install(FILES ${PROJECT_SOURCE_DIR}/doc/pdfinfo.1 DESTINATION ${CMAKE_INSTALL_MANDIR}/man1)
+if(XPDF_INSTALL)
+	install(TARGETS pdfinfo RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
+	install(FILES ${PROJECT_SOURCE_DIR}/doc/pdfinfo.1 DESTINATION ${CMAKE_INSTALL_MANDIR}/man1)
+endif()
 
 #--- pdffonts
 
@@ -210,8 +217,10 @@ target_link_libraries(pdffonts goo fofi
                       ${LCMS_LIBRARY}
                       ${FONTCONFIG_LIBRARY}
                       ${CMAKE_THREAD_LIBS_INIT})
-install(TARGETS pdffonts RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
-install(FILES ${PROJECT_SOURCE_DIR}/doc/pdffonts.1 DESTINATION ${CMAKE_INSTALL_MANDIR}/man1)
+if(XPDF_INSTALL)
+	install(TARGETS pdffonts RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
+	install(FILES ${PROJECT_SOURCE_DIR}/doc/pdffonts.1 DESTINATION ${CMAKE_INSTALL_MANDIR}/man1)
+endif()
 
 #--- pdfdetach
 
@@ -225,8 +234,10 @@ target_link_libraries(pdfdetach goo fofi
                       ${LCMS_LIBRARY}
                       ${FONTCONFIG_LIBRARY}
                       ${CMAKE_THREAD_LIBS_INIT})
-install(TARGETS pdfdetach RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
-install(FILES ${PROJECT_SOURCE_DIR}/doc/pdfdetach.1 DESTINATION ${CMAKE_INSTALL_MANDIR}/man1)
+if(XPDF_INSTALL)
+	install(TARGETS pdfdetach RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
+	install(FILES ${PROJECT_SOURCE_DIR}/doc/pdfdetach.1 DESTINATION ${CMAKE_INSTALL_MANDIR}/man1)
+endif()
 
 #--- pdftoppm
 
@@ -245,8 +256,10 @@ if (HAVE_SPLASH)
                         ${LCMS_LIBRARY}
                         ${FONTCONFIG_LIBRARY}
                         ${CMAKE_THREAD_LIBS_INIT})
+if(XPDF_INSTALL)
   install(TARGETS pdftoppm RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
   install(FILES ${PROJECT_SOURCE_DIR}/doc/pdftoppm.1 DESTINATION ${CMAKE_INSTALL_MANDIR}/man1)
+endif()
 endif ()
 
 #--- pdftopng
@@ -267,8 +280,10 @@ if (HAVE_SPLASH AND PNG_FOUND)
                         ${PNG_LIBRARIES}
                         ${FONTCONFIG_LIBRARY}
                         ${CMAKE_THREAD_LIBS_INIT})
+if(XPDF_INSTALL)
   install(TARGETS pdftopng RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
   install(FILES ${PROJECT_SOURCE_DIR}/doc/pdftopng.1 DESTINATION ${CMAKE_INSTALL_MANDIR}/man1)
+endif()
 endif ()
 
 #--- pdfimages
@@ -284,9 +299,11 @@ target_link_libraries(pdfimages goo fofi
                       ${LCMS_LIBRARY}
                       ${FONTCONFIG_LIBRARY}
                       ${CMAKE_THREAD_LIBS_INIT})
-install(TARGETS pdfimages RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
-install(FILES ${PROJECT_SOURCE_DIR}/doc/pdfimages.1 DESTINATION ${CMAKE_INSTALL_MANDIR}/man1)
+if(XPDF_INSTALL)
+	install(TARGETS pdfimages RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
+	install(FILES ${PROJECT_SOURCE_DIR}/doc/pdfimages.1 DESTINATION ${CMAKE_INSTALL_MANDIR}/man1)
 
-#--- xpdfrc man page
+	#--- xpdfrc man page
 
-install(FILES ${PROJECT_SOURCE_DIR}/doc/xpdfrc.5 DESTINATION ${CMAKE_INSTALL_MANDIR}/man5)
+	install(FILES ${PROJECT_SOURCE_DIR}/doc/xpdfrc.5 DESTINATION ${CMAKE_INSTALL_MANDIR}/man5)
+endif()

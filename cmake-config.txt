@@ -98,6 +98,8 @@ else ()
   option(XPDFWIDGET_PRINTING "include printing support in XpdfWidget" ON)
 endif ()
 
+option(XPDF_INSTALL "Install applications and library" OFF)
+
 #--- paths
 set(SYSTEM_XPDFRC "${SYSTEM_XPDFRC}" CACHE FILEPATH "full path for system-wide xpdfrc file")
 set(XPDFRC_DATADIR "${XPDFRC_DATADIR}" CACHE PATH "directory to use for the DATADIR xpdfrc variable")
