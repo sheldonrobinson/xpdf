@@ -98,6 +98,7 @@ else ()
   option(XPDFWIDGET_PRINTING "include printing support in XpdfWidget" ON)
 endif ()
 
+option(ENABLE_LIBXPDF "Setup to build libxpdf" OFF)
 option(XPDF_INSTALL "Install applications and library" OFF)
 
 #--- paths

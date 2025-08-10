@@ -8,6 +8,7 @@
 #
 #========================================================================
 
+
 include_directories("${PROJECT_SOURCE_DIR}")
 include_directories("${PROJECT_BINARY_DIR}")
 include_directories("${PROJECT_SOURCE_DIR}/goo")
@@ -30,9 +31,11 @@ else ()
 endif ()
 
 if(ENABLE_LIBXPDF)
-  set(LIBXPDF_SOURCE "TextOutputDev.cc")
+  set(TextOutputDev_SOURCE "TextOutputDev.cc")
+  set(EXCLUDED_TextOutputDev_SOURCE "")
 else()
-  set(LIBXPDF_SOURCE "")
+  set(TextOutputDev_SOURCE "")
+  set(EXCLUDED_TextOutputDev_SOURCE "TextOutputDev.cc")
 endif()
 
 add_library(xpdf_objs OBJECT
@@ -72,7 +75,7 @@ add_library(xpdf_objs OBJECT
   PSTokenizer.cc
   SecurityHandler.cc
   Stream.cc
-  TextOutputDev.cc
+  ${LIBXPDF_SOURCE}
   TextString.cc
   UnicodeMap.cc
   UnicodeRemapping.cc
@@ -103,6 +106,7 @@ if ((QT4_FOUND OR Qt5Widgets_FOUND OR Qt6Widgets_FOUND)
     PSOutputDev.cc
     ShadingImage.cc
     SplashOutputDev.cc
+    ${EXCLUDED_TextOutputDev_SOURCE}
     TileCache.cc
     TileCompositor.cc
     TileMap.cc
@@ -153,6 +157,7 @@ endif()
 
 add_executable(pdftotext
   $<TARGET_OBJECTS:xpdf_objs>
+  ${EXCLUDED_TextOutputDev_SOURCE}
   pdftotext.cc
   ${MANIFEST}
 )
@@ -174,6 +179,7 @@ if (HAVE_SPLASH AND PNG_FOUND)
     HTMLGen.cc
     ShadingImage.cc
     SplashOutputDev.cc
+	${EXCLUDED_TextOutputDev_SOURCE}
     WebFont.cc
     pdftohtml.cc
     ${MANIFEST}
