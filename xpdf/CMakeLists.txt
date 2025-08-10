@@ -75,7 +75,7 @@ add_library(xpdf_objs OBJECT
   PSTokenizer.cc
   SecurityHandler.cc
   Stream.cc
-  ${LIBXPDF_SOURCE}
+  ${TextOutputDev_SOURCE}
   TextString.cc
   UnicodeMap.cc
   UnicodeRemapping.cc
