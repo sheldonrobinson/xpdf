@@ -29,6 +29,12 @@ else ()
   set(MANIFEST "")
 endif ()
 
+if(ENABLE_LIBXPDF)
+  set(LIBXPDF_SOURCE "TextOutputDev.cc")
+else()
+  set(LIBXPDF_SOURCE "")
+endif()
+
 add_library(xpdf_objs OBJECT
   AcroForm.cc
   Annot.cc
@@ -66,6 +72,7 @@ add_library(xpdf_objs OBJECT
   PSTokenizer.cc
   SecurityHandler.cc
   Stream.cc
+  TextOutputDev.cc
   TextString.cc
   UnicodeMap.cc
   UnicodeRemapping.cc
@@ -96,7 +103,6 @@ if ((QT4_FOUND OR Qt5Widgets_FOUND OR Qt6Widgets_FOUND)
     PSOutputDev.cc
     ShadingImage.cc
     SplashOutputDev.cc
-    TextOutputDev.cc
     TileCache.cc
     TileCompositor.cc
     TileMap.cc
@@ -147,7 +153,6 @@ endif()
 
 add_executable(pdftotext
   $<TARGET_OBJECTS:xpdf_objs>
-  TextOutputDev.cc
   pdftotext.cc
   ${MANIFEST}
 )
@@ -169,7 +174,6 @@ if (HAVE_SPLASH AND PNG_FOUND)
     HTMLGen.cc
     ShadingImage.cc
     SplashOutputDev.cc
-    TextOutputDev.cc
     WebFont.cc
     pdftohtml.cc
     ${MANIFEST}
